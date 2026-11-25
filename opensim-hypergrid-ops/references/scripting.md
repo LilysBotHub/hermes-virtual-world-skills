@@ -39,7 +39,7 @@ default
         vector  lookAt = <128.0, 128.0, 30.0>;    // where they face on arrival
 
         llListen(0, "", llGetOwner(), "");
-        llOwnerSay("[Porta] touch to open the Stargate.");
+        llOwnerSay("[HG] touch to open the Stargate.");
     }
 
     touch_start(integer total_number)
@@ -54,13 +54,13 @@ default
         // Prefer OSSL cross-grid teleport; the 5s delay is on the caller.
         if (osTeleportAgent(who, dest, lander, lookAt))
         {
-            llOwnerSay("Porta open for " + llKey2Name(who) + " — crossing to the ExampleGrid.");
+            llOwnerSay("Stargate open for " + llKey2Name(who) + " — crossing to the ExampleGrid.");
         }
         else
         {
             // OSSL blocked/threat-restricted: fall back to a viewer-initiated portal.
             llOwnerSay("OSSL unavailable here — offering a map portal instead.");
-            llMapDestination("Porta Landing", lander, lander);
+            llMapDestination("ExampleGrid Landing", lander, lander);
         }
     }
 }
@@ -84,7 +84,7 @@ default
     state_entry()
     {
         llListen(0, "", "", "");
-        llOwnerSay("[Porta] Listening for foreign visitors.");
+        llOwnerSay("[HG] Listening for foreign visitors.");
     }
 
     listener(integer channel, string name, key id, string msg)
